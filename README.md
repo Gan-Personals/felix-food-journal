@@ -3,6 +3,12 @@
 Unpublished. No Vercel connection, domain, paid service, or public hosting.
 The name and short bio are drafts for Felix to approve.
 
+Layout revision on `draft/compact-region-navigation`: compact review cards and
+large China / US / Europe flag navigation. Each region opens its own HTML page;
+the homepage starts with China. Navigation is also present on individual reviews.
+This revision is an offline private preview, not pushed: repository app-installation
+visibility could not be verified, so a branch push might trigger an integration.
+
 ## Add a review
 
 Drop a Markdown file into `content/China/`, `content/US/`, or `content/Europe/`.
