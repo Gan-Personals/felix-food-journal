@@ -26,6 +26,37 @@ quoted. Put the cover in `public/images/`. One cover per review; `cover_alt` is
 optional descriptive alternative text. Only trusted author-written Markdown is
 supported (raw HTML is permitted by the Markdown renderer).
 
+### Styling posts directly in GitHub
+
+Markdown is a convenience, not a requirement for the body. Keep the `.md`
+filename and front matter so the existing builder can find the post, then use
+Markdown, HTML, or a mixture below it. Standalone `.html` source files are not
+currently scanned; no extra format or posting interface is needed.
+
+The builder supplies the title, subtitle, date/location, cover, navigation and
+`.prose` wrapper automatically. Inside the body, use `<h2>` for section headings
+and `<p>` for paragraphs; both inherit the shared typography and spacing.
+Reusable classes in `public/style.css` include:
+
+| Class | Use |
+| --- | --- |
+| `meta` | Small muted metadata or a photo credit |
+| `eyebrow` | Small uppercase-style section label |
+| `subtitle` | Muted introductory text |
+| `post-cover` | Full-width image, with responsive sizing |
+
+For example, below the front matter:
+
+```html
+<h2>Taste · 3.5/5</h2>
+<p>Your review goes here. <em>A detail worth remembering.</em></p>
+<p class="meta">A short photo credit or visit note.</p>
+```
+
+Edit the shared stylesheet to change the whole site's styling rather than
+duplicating CSS in posts. Keep scripts, external embeds, and tracking out of
+posts. This remains a manual, trusted-author workflow edited directly in GitHub.
+
 The first post preserves Felix's supplied review and scores. Its cover is a
 clearly labeled typographic placeholder, not a photograph of the venue. Replace
 it when an original photograph is available. No exact visit day was supplied,
