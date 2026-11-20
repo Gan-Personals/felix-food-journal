@@ -1,4 +1,10 @@
 /* Navigation-first regional layout. Kept separate for easy review. */
+[hidden]{display:none!important}
+.region-nav button{font:700 24px Arial,sans-serif;display:flex;align-items:center;justify-content:center;gap:12px;padding:19px 10px;border:1px solid #aeb9aa;border-radius:4px;background:#e7e9dd;color:inherit;cursor:pointer}
+.region-nav button[aria-selected=true]{background:#243f32;color:#f4f0e7;border-color:#243f32}
+.region-nav button:hover{box-shadow:inset 0 0 0 2px #a3422c}
+.region-nav button:focus-visible{outline:3px solid #a3422c;outline-offset:3px}
+@media(max-width:550px){.region-nav button{font-size:17px;gap:6px;padding:15px 4px}}
 .compact-intro{padding:22px 0 12px;max-width:760px}
 .compact-intro h1{font-size:clamp(30px,4vw,46px);margin:10px 0 12px}
 .compact-intro .eyebrow{margin-top:12px}

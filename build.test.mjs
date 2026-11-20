@@ -8,7 +8,9 @@ test('homepage has bio, region sections and one complete card', async()=>{
  assert.equal((h.match(/class="card"/g)||[]).length,1);
  assert.ok(h.indexOf('I’m Felix.')<h.indexOf('id="china"'));
  assert.ok(h.includes('data:image/svg+xml;base64,'));
- assert.ok(!/<script|https?:\/\//.test(h));
+ assert.ok(!/https?:\/\//.test(h));
+ assert.equal((h.match(/role="tabpanel"/g)||[]).length,3);
+ assert.equal((h.match(/<button type="button" role="tab"/g)||[]).length,3);
 });
 test('regions open separately rather than stacking sections', async()=>{
  for(const region of ['china','us','europe']) {

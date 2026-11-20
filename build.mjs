@@ -49,5 +49,8 @@ const intro = `<div class="intro compact-intro"><p class="eyebrow">A PERSONAL FO
 for (const [index,region] of regions.entries()) {
   await writeFile(`dist/${slug(region)}.html`,page(region,`${intro}${navigation(region)}${sections[index]}`,'index.html'));
 }
-await writeFile('dist/index.html',page('The journal',`${intro}${navigation(regions[0])}${sections[0] || ''}`,'index.html'));
+const tabs = `<div class="region-nav" role="tablist" aria-label="Browse by region">${regions.map((r,i)=>`<button type="button" role="tab" id="tab-${slug(r)}" aria-controls="${slug(r)}" aria-selected="${i===0}" tabindex="${i===0?0:-1}"><span aria-hidden="true">${flags[r] || '🌍'}</span> ${escape(r)}</button>`).join('')}</div>`;
+const panels = sections.map((section,i)=>section.replace(`<section id="${slug(regions[i])}">`,`<section id="${slug(regions[i])}" role="tabpanel" aria-labelledby="tab-${slug(regions[i])}" tabindex="0" ${i?'hidden':''}>`)).join('');
+const tabScript = await readFile('public/tabs.js','utf8');
+await writeFile('dist/index.html',page('The journal',`${intro}${tabs}${panels}<noscript>Enable JavaScript to switch regions, or open ${regions.map(r=>`<a href="${slug(r)}.html">${escape(r)}</a>`).join(' / ')}.</noscript><script>${tabScript}</script>`,'index.html'));
 console.log('Built private preview in dist/');

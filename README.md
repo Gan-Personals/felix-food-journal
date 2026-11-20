@@ -3,11 +3,16 @@
 Unpublished. No Vercel connection, domain, paid service, or public hosting.
 The name and short bio are drafts for Felix to approve.
 
-Layout revision on `draft/compact-region-navigation`: compact review cards and
-large China / US / Europe flag navigation. Each region opens its own HTML page;
-the homepage starts with China. Navigation is also present on individual reviews.
-This revision is an offline private preview, not pushed: repository app-installation
-visibility could not be verified, so a branch push might trigger an integration.
+The homepage embeds every regional card group. Large flagged tabs switch panels
+in place with a small inline script: no fetch, navigation, or page reload. China
+is initially selected; keyboard arrows, Home and End are supported. Separate
+region pages remain available as a no-JavaScript fallback and from review pages.
+Individual review links and manual region folders are unchanged.
+
+Browser regression test: `node browser-check.cjs` with Playwright available, or
+set `PLAYWRIGHT_MODULE` to an existing installation. Set `TEST_URL` to test a
+deployed homepage instead of the local build. It checks mobile/desktop switching,
+keyboard support, document identity, no requests/navigation and no overflow.
 
 ## Add a review
 
